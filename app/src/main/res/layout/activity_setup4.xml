@@ -39,8 +39,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
-            android:background="@drawable/coner_bg_white">
+            android:layout_weight="1"
+            android:background="@android:color/white">
 
             <TextView
                 style="@style/textview16sp"
@@ -48,7 +48,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:drawableLeft="@drawable/security_phone"
-                android:drawablePadding="10dp" />
+                android:drawablePadding="10dp"
+                android:textColor="@color/purple"/>
 
             <ToggleButton
                 android:id="@+id/togglebtn_securityfunction"
