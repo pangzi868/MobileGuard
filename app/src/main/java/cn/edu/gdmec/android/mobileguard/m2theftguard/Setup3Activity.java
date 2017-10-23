@@ -17,6 +17,7 @@ public class Setup3Activity extends BaseSetUpActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup3);
+        //设置第三个小圆点的颜色
         ((RadioButton)findViewById(R.id.rb_third)).setChecked(true);
 
         ((RadioButton)findViewById(R.id.rb_third)).setChecked(true);
@@ -29,6 +30,7 @@ public class Setup3Activity extends BaseSetUpActivity implements View.OnClickLis
     }
 
     public void showNext(){
+        //判断文本输入框中是否有电话号码
         String safePhone = mInputPhone.getText().toString().trim();
         if(TextUtils.isEmpty(safePhone)){
             Toast.makeText(this,"请输入安全号码",Toast.LENGTH_LONG).show();

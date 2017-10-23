@@ -17,7 +17,9 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 
 public class ContactInfoParser {
     public static List<ContactInfo> getSystemContact(Context context){
+        //获取内容解析者
         ContentResolver resolver = context.getContentResolver();
+        //1.查询raq_contacts表，把联系人的id取出来
         Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");
         Uri datauri = Uri.parse("content://com.android.contacts/data");
         List<ContactInfo> infos = new ArrayList<ContactInfo>();
@@ -28,8 +30,10 @@ public class ContactInfoParser {
                 System.out.println("联系人id:" + id);
                 ContactInfo info = new ContactInfo();
                 info.id = id;
-                Cursor dataCursor = resolver.query(datauri,new String[]
-                        {"data1","mimetype"},"raw_contact_id=?",
+                //2.根据联系人de，查询data表，把这个id的数据取出来
+                //系统api查询data表的时候 不是真正的查询data表 而是查询的data表的视图
+                Cursor dataCursor = resolver.query(datauri,new String[]{
+                                "data1","mimetype"},"raw_contact_id=?",
                         new String[] { id },null);
                 while (dataCursor.moveToNext()){
                     String data1 = dataCursor.getString(0);
@@ -43,6 +47,7 @@ public class ContactInfoParser {
                         info.phone = data1;
                     }
                 }
+                //如果姓名和手机都为空，则跳过该条数据
                 if(TextUtils.isEmpty(info.name) && TextUtils.isEmpty(info.phone))
                     continue;
                 infos.add(info);
@@ -60,8 +65,10 @@ public class ContactInfoParser {
         if (mCursor != null){
             while(mCursor.moveToNext()){
                 ContactInfo info = new ContactInfo();
+                //获得联系人名字
                 int nameFiledColumnIndex = mCursor.getColumnIndex("name");
                 info.name = mCursor.getString(nameFiledColumnIndex);
+                //取得电话号码
                 int numberFieldColumnIndex = mCursor.getColumnIndex("number");
                 info.phone = mCursor.getString(numberFieldColumnIndex);
                 infos.add(info);

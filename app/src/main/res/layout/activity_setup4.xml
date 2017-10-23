@@ -48,8 +48,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:drawableLeft="@drawable/security_phone"
-                android:drawablePadding="10dp"
-                android:background="@drawable/add"/>
+                android:drawablePadding="10dp" />
 
             <ToggleButton
                 android:id="@+id/togglebtn_securityfunction"
