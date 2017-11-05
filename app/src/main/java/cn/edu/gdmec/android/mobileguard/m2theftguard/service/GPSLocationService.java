@@ -15,11 +15,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.SmsManager;
 
+/**用于定位*/
 public class GPSLocationService extends Service{
     private LocationManager lm;
     private MyListener listener;
 
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -37,7 +37,10 @@ public class GPSLocationService extends Service{
         criteria.setCostAllowed(true);//允许产生开销
         String name = lm.getBestProvider(criteria,true);
         //权限检查
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
             return;
         }
         lm.requestLocationUpdates(name,0,0,listener);
