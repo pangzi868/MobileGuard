@@ -27,7 +27,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private BlackNumberDao dao = new BlackNumberDao(SecurityPhoneActivity.this);
     private ListView mListView;
     private int pagenumber = 0;
-    private int pagesize = 4;
+    private int pagesize = 20;
     private int totalNumber;
     private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo>();
     private BlackContactAdapte adapter;
@@ -65,7 +65,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initView() {
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_purple));
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_gray));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         ((TextView)findViewById(R.id.tv_title)).setText("通讯卫士");
         mLeftImgv.setOnClickListener(this);

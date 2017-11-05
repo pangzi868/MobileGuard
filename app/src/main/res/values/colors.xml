@@ -6,6 +6,6 @@
     <!--手机防盗模块需要用到 2017.10.13-->
     <color name="purple">#5542B8</color>
     <!--通讯卫士模块要用到的2017.11.4-->
-    <color name="bright_pink">#e1a3d4</color>
+    <color name="bright_gray">#9f9f9f</color>
     <color name="light_gary">#D1D0CE</color>
 </resources>
