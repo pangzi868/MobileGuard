@@ -23,7 +23,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
     private EditText mNameET;
     private BlackNumberDao dao;
     private void initView(){
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_purple));
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_pink));
         ((TextView)findViewById(R.id.tv_title)).setText("添加黑名单");
         ImageView mLeftImagv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImagv.setOnClickListener(this);
