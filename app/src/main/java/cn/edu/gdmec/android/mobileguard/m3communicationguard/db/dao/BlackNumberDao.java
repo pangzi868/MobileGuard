@@ -82,7 +82,6 @@ public class BlackNumberDao {
             info.phoneNumber = cursor.getString(0);
             info.mode = cursor.getInt(1);
             info.contactName = cursor.getString(2);
-            //5.
             info.blackType = cursor.getString(3);
             mBlackContactInfos.add(info);
 
