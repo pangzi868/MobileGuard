@@ -26,6 +26,8 @@ public class BlackContactAdapte extends BaseAdapter {
     class ViewHolder{
         TextView mNameTV;
         TextView mModeTV;
+        //13.加了个不知道什么tv
+        TextView mTypeTV;
         View mContactImgv;
         View mDeleteView;
     }
@@ -65,6 +67,8 @@ public class BlackContactAdapte extends BaseAdapter {
             holder = new ViewHolder();
             holder.mNameTV = (TextView) view.findViewById(R.id.tv_black_name);
             holder.mModeTV = (TextView) view.findViewById(R.id.tv_black_mode);
+            //14.找到id
+            holder.mTypeTV = (TextView) view.findViewById(R.id.tv_black_type);
             holder.mContactImgv = view.findViewById(R.id.view_black_icon);
             holder.mDeleteView = view.findViewById(R.id.view_black_delete);
             view.setTag(holder);
@@ -73,8 +77,12 @@ public class BlackContactAdapte extends BaseAdapter {
         }
         holder.mNameTV.setText(contactInfos.get(position).contactName+"("+contactInfos.get(position).phoneNumber+")");
         holder.mModeTV.setText(contactInfos.get(position).getModeString(contactInfos.get(position).mode));
+        //15.添加黑名单类型视图
+        holder.mTypeTV.setText(contactInfos.get(position).blackType);
         holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_gray));
         holder.mModeTV.setTextColor(context.getResources().getColor(R.color.bright_gray));
+        //16.添加不知道什么
+        holder.mTypeTV.setTextColor(context.getResources().getColor(R.color.bright_gray));
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override
