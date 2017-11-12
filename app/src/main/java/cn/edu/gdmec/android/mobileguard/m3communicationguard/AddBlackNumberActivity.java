@@ -78,7 +78,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                 String name = mNameET.getText().toString().trim();
                 //11.添加type
                 String type = mTypeET.getText().toString().trim();
-                if (TextUtils.isEmpty(number)||TextUtils.isEmpty(name)&&TextUtils.isEmpty(type)){
+                if (TextUtils.isEmpty(number)&&TextUtils.isEmpty(name)&&TextUtils.isEmpty(type)){
                     Toast.makeText(this, "电话号码和手机号码和黑名单类型不能为空！", Toast.LENGTH_LONG).show();
                     return;
                 }else {

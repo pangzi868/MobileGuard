@@ -75,7 +75,7 @@ public class BlackNumberDao {
         //得到可读的数据库
         SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
         // 4.查询添加type
-        Cursor cursor = db.rawQuery("select number,name,mode,type from blacknumber limit ? offset ?",new String[]{String.valueOf(pagesize),String.valueOf(pagesize*pagenumber)});
+        Cursor cursor = db.rawQuery("select number,mode,name,type from blacknumber limit ? offset ?",new String[]{String.valueOf(pagesize),String.valueOf(pagesize*pagenumber)});
         List<BlackContactInfo> mBlackContactInfos = new ArrayList<BlackContactInfo>();
         while(cursor.moveToNext()){
             BlackContactInfo info =new BlackContactInfo();
