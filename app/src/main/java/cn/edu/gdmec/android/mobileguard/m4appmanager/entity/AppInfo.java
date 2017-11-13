@@ -11,7 +11,7 @@ public class AppInfo {
     public String installTime;
     public String certifi;
     public String permisstion;
-    public String classPath;
+    public String activityInfo;
     /*应用程序包名*/
     public String packageName;
     /*应用程序图标*/
