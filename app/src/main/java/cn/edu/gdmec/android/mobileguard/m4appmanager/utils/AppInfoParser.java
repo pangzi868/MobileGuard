@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -45,6 +46,7 @@ public class AppInfoParser {
             appinfo.version = version;
             //应用的安装时间
             appinfo.installTime = new Date(packInfo.firstInstallTime).toString();
+
             //应用的签名
             try {
                 PackageInfo packinfo = pm.getPackageInfo(packname, PackageManager.GET_SIGNATURES);
@@ -61,8 +63,8 @@ public class AppInfoParser {
             } catch (CertificateException e) {
                 e.printStackTrace();
             }
-            //应用的权限申请信息
 
+            //应用的权限申请信息
             PackageInfo packinfo2 = null;
             try {
                 packinfo2 = pm.getPackageInfo(packname, PackageManager.GET_PERMISSIONS);
@@ -79,6 +81,21 @@ public class AppInfoParser {
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
+
+            //应用activityinfo
+            PackageInfo packinfo3;
+            try {
+                packinfo3 = pm.getPackageInfo(packname, PackageManager.GET_ACTIVITIES);
+                ActivityInfo[] activityInfos = packinfo3.activities;
+                if (activityInfos != null){
+                    for (ActivityInfo info :activityInfos){
+                        appinfo.activityInfo = appinfo.activityInfo + info.name + "\n";
+                    }
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
             //应用程序安装的位置
             int flags = packInfo.applicationInfo.flags;//二进制映射 大bit-map
             if ((ApplicationInfo.FLAG_EXTERNAL_STORAGE & flags)!=0){

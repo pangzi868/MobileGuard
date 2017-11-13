@@ -79,10 +79,10 @@ public class BlackContactAdapte extends BaseAdapter {
         holder.mModeTV.setText(contactInfos.get(position).getModeString(contactInfos.get(position).mode));
         //15.添加黑名单类型视图
         holder.mTypeTV.setText(contactInfos.get(position).blackType);
-        holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_gray));
-        holder.mModeTV.setTextColor(context.getResources().getColor(R.color.bright_gray));
+        holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
+        holder.mModeTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         //16.添加不知道什么
-        holder.mTypeTV.setTextColor(context.getResources().getColor(R.color.bright_gray));
+        holder.mTypeTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override

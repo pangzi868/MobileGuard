@@ -94,6 +94,16 @@
             android:drawableTop="@drawable/abouticon_yellow_n"
             android:text="@string/app_about"
             />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/black30"/>
+        <TextView
+            android:id="@+id/tv_activity_app"
+            style="@style/tvyellow14sp"
+            android:drawableTop="@drawable/activityicon_yellow_n"
+            android:text="@string/app_activity"
+            />
     </LinearLayout>
 
 </LinearLayout>

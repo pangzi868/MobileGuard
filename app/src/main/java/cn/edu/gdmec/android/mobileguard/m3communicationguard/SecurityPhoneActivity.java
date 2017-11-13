@@ -65,7 +65,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initView() {
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_gray));
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_purple));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         ((TextView)findViewById(R.id.tv_title)).setText("通讯卫士");
         mLeftImgv.setOnClickListener(this);
