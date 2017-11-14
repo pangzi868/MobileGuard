@@ -77,7 +77,7 @@ public class EngineUtils {
     public static void ActivityAppDetail(Context context,AppInfo appInfo){
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(appInfo.appName);
-        builder.setMessage("activity: \n" + "cn.edu.gdmec.android.mobileguard.SplashActivity");
+        builder.setMessage("activity: \n" + appInfo.activityInfo);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
