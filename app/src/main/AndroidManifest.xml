@@ -103,6 +103,9 @@
         <!--软件管家部分-->
         <activity android:name=".m4appmanager.AppManagerActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--杀毒软件部分-->
+        <activity android:name=".m5virusscan.VirusScanActivity"/>
+        <activity android:name=".m5virusscan.VirusScanSpeedActivity"/>
     </application>
 
 </manifest>
