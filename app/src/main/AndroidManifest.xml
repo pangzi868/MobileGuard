@@ -110,9 +110,15 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".m5virusscan.VirusScanSpeedActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--缓存清理部分-->
         <activity android:name=".m6cleancache.CacheClearListActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".m6cleancache.CleanCacheActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--流量统计-->
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 

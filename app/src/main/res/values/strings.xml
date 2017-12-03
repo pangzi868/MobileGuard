@@ -6,4 +6,5 @@
     <string name="app_install">设置</string>
     <string name="app_about">关于</string>
     <string name="app_activity">活动</string>
+    <string name="operatorset_string">仅一次简单设置，以后即可便捷矫正流量，时刻保持与运营商保持精准同步</string>
 </resources>
