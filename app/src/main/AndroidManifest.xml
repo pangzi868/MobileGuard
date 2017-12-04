@@ -34,11 +34,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".m2theftguard.LostFindActivity" />
-        <activity android:name=".m2theftguard.Setup1Activity" />
-        <activity android:name=".m2theftguard.Setup2Activity" />
-        <activity android:name=".m2theftguard.Setup3Activity" />
-        <activity android:name=".m2theftguard.Setup4Activity" />
+        <activity android:name=".m2theftguard.LostFindActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup1Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup2Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup3Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup4Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReceiver"

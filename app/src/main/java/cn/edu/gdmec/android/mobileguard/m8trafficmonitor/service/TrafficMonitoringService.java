@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.service;
+package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service;
 
 
 import android.app.Service;

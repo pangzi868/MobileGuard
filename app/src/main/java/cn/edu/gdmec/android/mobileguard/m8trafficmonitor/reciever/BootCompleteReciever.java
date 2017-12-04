@@ -1,12 +1,12 @@
-package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.reciever;
+package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.reciever;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.service.TrafficMonitoringService;
-import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.utils.SystemInfoUtils;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service.TrafficMonitoringService;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
 
 /**
  * Created by 头兄。 on 2017/12/3.

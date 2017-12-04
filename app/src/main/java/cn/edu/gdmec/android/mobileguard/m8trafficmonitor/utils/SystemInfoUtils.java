@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.utils;
+package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
