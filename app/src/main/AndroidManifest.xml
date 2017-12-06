@@ -125,6 +125,11 @@
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--号码归属地-->
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m9advancedtools.NumBelongtoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
