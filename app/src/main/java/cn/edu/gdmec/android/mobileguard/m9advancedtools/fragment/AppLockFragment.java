@@ -1,11 +1,11 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +30,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
  * Created by student on 17/12/11.
  */
 
-public class AppLockFragment extends Fragment{
+public class AppLockFragment extends Fragment {
     private Context context;
     private TextView mLockTV;
     private ListView mLockLV;

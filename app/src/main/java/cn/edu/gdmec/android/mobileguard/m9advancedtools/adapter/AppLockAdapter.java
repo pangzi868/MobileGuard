@@ -37,6 +37,10 @@ public class AppLockAdapter extends BaseAdapter{
         return appInfos.get(i);
     }
 
+    public long getItemId(int i){
+        return i;
+    }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup){
         ViewHolder holder;
@@ -59,7 +63,7 @@ public class AppLockAdapter extends BaseAdapter{
             holder.mLockIcon.setBackgroundResource(R.drawable.applock_icon);
         }else{
             //当前应用未加锁
-            holder.mLockIcon.setBackgroundResource(R.drawable.appunlock_icon)
+            holder.mLockIcon.setBackgroundResource(R.drawable.appunlock_icon);
         }
         return view;
     }
