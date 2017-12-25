@@ -3,9 +3,8 @@ package cn.edu.gdmec.android.mobileguard.m6cleancache.entity;
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by 头兄。 on 2017/11/26.
+ * Created by Administrator on 2017/11/24.
  */
-
 
 public class CacheInfo {
     /*包名*/

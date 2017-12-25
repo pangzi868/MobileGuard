@@ -20,10 +20,6 @@ import java.util.Random;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-/**
- * Created by 头兄。 on 2017/11/26.
- */
-
 public class CleanCacheActivity extends AppCompatActivity implements View.OnClickListener{
     protected static final int CLEANNING = 100;
     protected static final int CLEAN_FINISH = 10;
@@ -163,4 +159,3 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
     }
 
 }
-

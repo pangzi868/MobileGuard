@@ -1,6 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +12,11 @@ import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,93 +25,87 @@ import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.dao.TrafficDao;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service.TrafficMonitoringService;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
 
-/**
- * Created by 头兄。 on 2017/12/3.
- */
-
 public class TrafficMonitoringActivity extends AppCompatActivity implements View.OnClickListener{
     private SharedPreferences mSP;
-    private Button mCorrentFlowBtn;
-    private TextView mTotalTV;
+    private Button mCorrectFlowBtn;
+    private TextView mTotalTv;
     private TextView mUsedTV;
     private TextView mToDayTV;
     private TrafficDao dao;
     private ImageView mRemindIMGV;
     private TextView mRemindTV;
     private CorrectFlowReceiver receiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_traffic_monitor);
-        mSP=getSharedPreferences("config",MODE_PRIVATE);
-        boolean flag=mSP.getBoolean("isset_operator",false);
-        //如果没有设置运营商消息则进入信息设置页面
+        setContentView(R.layout.activity_traffic_monitoring);
+        mSP = getSharedPreferences("config",MODE_PRIVATE);
+        boolean flag = mSP.getBoolean("isset_operator",false);
         if (!flag){
             startActivity(new Intent(this,OperatorSetActivity.class));
             finish();
         }
-        if (!SystemInfoUtils
-                .isServiceRunning(this,
+        if (!SystemInfoUtils.isServiceRunning(this,
                 "cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service.TrafficMonitoringService")){
-            startService(new Intent(this, TrafficMonitoringService.class));
+            startService(new Intent(this,TrafficMonitoringService.class));
         }
         initView();
-        registReceive();
+        registReceiver();
         initData();
     }
-    private void initView() {
-        findViewById(R.id.rl_titlebar).setBackgroundColor(
-                getResources().getColor(R.color.light_green)
-        );
-        ImageView mLeftImgv=(ImageView)findViewById(R.id.imgv_leftbtn);
-        ((TextView)findViewById(R.id.tv_title)).setText("流量监控");
-        mLeftImgv.setOnClickListener(this);
-        mLeftImgv.setImageResource(R.drawable.back);
-        ImageView mRightImgv = (ImageView) findViewById(R.id.imgv_rightbtn);
-        mRightImgv.setImageResource(R.drawable.proccessmanager_setting_icon);
-        mRightImgv.setOnClickListener(this);
-        mCorrentFlowBtn=(Button)findViewById(R.id.btn_correction_flow);
-        mCorrentFlowBtn.setOnClickListener(this);
-        mTotalTV=(TextView)findViewById(R.id.tv_month_totalgprs);
-        mUsedTV=(TextView)findViewById(R.id.tv_month_usedgprs);
-        mToDayTV=(TextView)findViewById(R.id.tv_today_gprs);
-        mRemindIMGV=(ImageView)findViewById(R.id.imgv_traffic_remind);
-        mRemindTV=(TextView)findViewById(R.id.tv_traffic_remind);
-    }
-
-
 
     private void initData() {
-        long totalflow=mSP.getLong("totalflow",0);
-        long usedflow=mSP.getLong("usedflow",0);
-        if (totalflow > 0 & usedflow >= 0){
-            float scale = usedflow / totalflow;
+        long totalflow = mSP.getLong("totalflow",0);
+        long usedflow = mSP.getLong("usedflow",0);
+        if (totalflow > 0 & usedflow >= 0 ){
+            float scale = usedflow/totalflow;
             if (scale > 0.9){
                 mRemindIMGV.setEnabled(false);
                 mRemindTV.setText("您的套餐流量即将用完！");
-            }else{
+            }else {
                 mRemindIMGV.setEnabled(true);
-                mRemindTV.setText("本月流量充足请放心使用！");
+                mRemindTV.setText("本月流量重铸请放心使用");
             }
         }
-        mTotalTV.setText("本月流量："+ Formatter.formatFileSize(this,totalflow));
+        mTotalTv.setText("本月流量："+ Formatter.formatFileSize(this,totalflow));
         mUsedTV.setText("本月已用："+Formatter.formatFileSize(this,usedflow));
-        dao=new TrafficDao(this);
-        Date date=new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        String dataString=sdf.format(date);
-        long moblieGPRS=dao.getMoblesGPRS(dataString);
-        if (moblieGPRS < 0){
+        dao = new TrafficDao(this);
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dataString = sdf.format(date);
+        long moblieGPRS = dao.getMoblieGPRS(dataString);
+        if (moblieGPRS <0){
             moblieGPRS = 0;
         }
         mToDayTV.setText("本日已用："+Formatter.formatFileSize(this,moblieGPRS));
     }
 
-    private void registReceive() {
-        receiver=new CorrectFlowReceiver();
-        IntentFilter filter=new IntentFilter();
+    private void registReceiver() {
+        receiver = new CorrectFlowReceiver();
+        IntentFilter filter = new IntentFilter();
         filter.addAction("android.provider.Telephony.SMS_RECEIVED");
         registerReceiver(receiver,filter);
+    }
+
+    private void initView() {
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.light_green));
+        ImageView ml = (ImageView) findViewById(R.id.imgv_leftbtn);
+        ((TextView)findViewById(R.id.tv_title)).setText("流量监控");
+        ml.setOnClickListener(this);
+        ml.setImageResource(R.drawable.back);
+        ImageView mRightImgv = (ImageView) findViewById(R.id.imgv_rightbtn);
+        mRightImgv.setImageResource(R.drawable.processmanager_setting_icon);
+        mRightImgv.setOnClickListener(this);
+        mCorrectFlowBtn = (Button) findViewById(R.id.btn_correction_flow);
+        mCorrectFlowBtn.setOnClickListener(this);
+        mTotalTv = (TextView) findViewById(R.id.tv_month_totalgprs);
+        mUsedTV = (TextView) findViewById(R.id.tv_month_usedgprs);
+        mToDayTV = (TextView) findViewById(R.id.tv_today_gprs);
+        mRemindIMGV = (ImageView) findViewById(R.id.imgv_traffic_remind);
+        mRemindTV = (TextView) findViewById(R.id.tv_traffic_remind);
+
     }
 
     @Override
@@ -125,34 +118,27 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 startActivity(new Intent(this,OperatorSetActivity.class));
                 break;
             case R.id.btn_correction_flow:
-                //首先判断是哪个运营商
-                int i= mSP.getInt("operator",0);
-                SmsManager smsManager=SmsManager.getDefault();
+                int i = mSP.getInt("operator",0);
+                SmsManager smsManager = SmsManager.getDefault();
                 switch (i){
                     case 0:
-                        //没有设置运营商
-                        Toast.makeText(this,"您还没有设置运营商信息",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "您还没有设置运营商信息", Toast.LENGTH_SHORT).show();
                         break;
-                    case 1:
                         //中国移动
-                        //发送cxll至10086
-                        //获取系统默认的短信管理器
+                    case 1:
                         smsManager.sendTextMessage("10086",null,"CXLL",null,null);
                         break;
-                    case 2:
-                        //中国联通
-                        smsManager.sendTextMessage("10010",null,"CXLL",null,null);
+                    case 2://联通
+//                        smsManager.sendTextMessage("10010",null,"CXLL",null,null);
                         break;
-                    case 3:
-                        //中国电信
-                        smsManager.sendTextMessage("10001",null,"108",null,null);
+                    case 3://电信
                         break;
-
                 }
-
         }
+
     }
     class CorrectFlowReceiver extends BroadcastReceiver{
+
         @Override
         public void onReceive(Context context, Intent intent) {
             Object[] objects = (Object[]) intent.getExtras().get("pdus");
@@ -165,7 +151,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 }
                 String[] split = body.split("，");
                 for (String s:split
-                        ) {
+                     ) {
                     System.out.println(s+"......");
                 }
                 long left = 0;
@@ -187,41 +173,40 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 edit.putLong("totalflow",used+left);
                 edit.putLong("usedflow",used+beyond);
                 edit.commit();
-                mTotalTV.setText("本月流量："
-                        +Formatter.formatFileSize(context,(used+left)));
-                mUsedTV.setText("本月已用："
-                        +Formatter.formatFileSize(context,(used+beyond)));
+                mTotalTv.setText("本月流量："+Formatter.formatFileSize(context,(used+left)));
+                mUsedTV.setText("本月已用："+Formatter.formatFileSize(context,(used+beyond)));
 
             }
         }
-    }
 
-    /*将字符串转换成FLOAT类型数据*/
+
+    }
     private long getStringTofloat(String str) {
-        long flow=0;
+        long flow = 0;
         if (!TextUtils.isEmpty(str)){
             if (str.contains("K")){
-                String[] split=str.split("K");
-                float m=Float.parseFloat(split[0]);
-                flow=(long)(m * 1024);
+                String[] split = str.split("K");
+                float m = Float.parseFloat(split[0]);
+                flow = (long) (m*1024);
             }else if (str.contains("M")){
-                String[] split=str.split("M");
-                float m=Float.parseFloat(split[0]);
-                flow=(long)(m * 1024 * 1024);
+                String[] split = str.split("M");
+                float m = Float.parseFloat(split[0]);
+                flow = (long) (m*1024*1024);
             }else if (str.contains("G")){
-                String[] split=str.split("G");
-                float m=Float.parseFloat(split[0]);
-                flow=(long)(m * 1024 * 1024 * 1024);
+                String[] split = str.split("G");
+                float m = Float.parseFloat(split[0]);
+                flow = (long) (m*1024*1024*1024);
             }
+
         }
         return flow;
     }
 
     @Override
     protected void onDestroy() {
-        if (receiver!=null){
+        if (receiver != null){
             unregisterReceiver(receiver);
-            receiver=null;
+            receiver = null;
         }
         super.onDestroy();
     }

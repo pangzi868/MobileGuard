@@ -2,10 +2,14 @@ package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
 import android.content.Context;
 
+/**
+ * Created by Administrator on 2017/11/5.
+ */
+
 public class DensityUtil {
-    /*
-    * dip转换像素px
-    * */
+/*
+* dip转换像素px
+* */
     public static int dip2px(Context context,float dpValue){
         try{
             final float scale = context.getResources().getDisplayMetrics().density;

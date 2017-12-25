@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:id="@+id/tv_launch_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/phoneicon_yellow_n"
-            android:text="@string/app_start"
+            android:text="启动"
 
             />
         <View
@@ -61,7 +61,7 @@
             android:id="@+id/tv_uninstall_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/deleteicon_yellow_n"
-            android:text="@string/app_delete"
+            android:text="卸载"
 
             />
         <View
@@ -72,7 +72,7 @@
             android:id="@+id/tv_share_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/shareicon_yellow_n"
-            android:text="@string/app_share"
+            android:text="分享"
             />
         <View
             android:layout_width="1px"
@@ -82,7 +82,7 @@
             android:id="@+id/tv_setting_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/settingicon_yellow_n"
-            android:text="@string/app_install"
+            android:text="设置"
             />
         <View
             android:layout_width="1px"
@@ -92,18 +92,19 @@
             android:id="@+id/tv_abouticon_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/abouticon_yellow_n"
-            android:text="@string/app_about"
+            android:text="关于"
             />
         <View
             android:layout_width="1px"
             android:layout_height="match_parent"
             android:background="@color/black30"/>
         <TextView
-            android:id="@+id/tv_activity_app"
+            android:id="@+id/tv_activityicon_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/activityicon_yellow_n"
-            android:text="@string/app_activity"
+            android:text="活动"
             />
+
     </LinearLayout>
 
 </LinearLayout>
