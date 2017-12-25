@@ -139,6 +139,13 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".m9advancedtools.NumBelongtoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--程序所-->
+        <activity android:name=".m9advancedtools.AppLockActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m9advancedtools.EnterPswActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <service android:name=".m9advancedtools.service.AppLockService"
+                 android:persistent="true"/>
     </application>
 
 </manifest>

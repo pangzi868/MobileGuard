@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_tools);
         initView();
@@ -46,6 +48,10 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
                 //进入归属地查询页面
                 startActivity(NumBelongtoActivity.class);
                 break;
+            case R.id.advanceview_applock:
+                //进入程序锁页面
+                startActivity(AppLockActivity.class);
+                break;
         }
     }
 
@@ -56,6 +62,6 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
 
     public void startActivity(Class<?> cls){
         Intent intent = new Intent(this,cls);
-        startActivity(intent);
+            startActivity(intent);
     }
 }
