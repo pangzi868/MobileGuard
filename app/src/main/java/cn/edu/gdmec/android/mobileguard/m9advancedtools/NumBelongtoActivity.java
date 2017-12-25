@@ -62,7 +62,7 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public void afterTextChanged(Editable s) {
-                //文本变化之后
+
                 String string = s.toString().toString().trim();
                 if(string.length() == 0){
                     mResultTV.setText("");
