@@ -14,7 +14,7 @@ import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
 
 /**
- * Created by 头兄。 on 2017/11/26.
+ * Created by Administrator on 2017/11/24.
  */
 
 public class CacheCleanAdapter extends BaseAdapter {

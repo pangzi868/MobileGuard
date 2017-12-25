@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
@@ -26,10 +28,9 @@ public class BlackContactAdapte extends BaseAdapter {
     class ViewHolder{
         TextView mNameTV;
         TextView mModeTV;
-        //13.加了个不知道什么tv
-        TextView mTypeTV;
         View mContactImgv;
         View mDeleteView;
+        TextView mTypeTV;
     }
     public interface BlackConactCallBack{
         void DataSizeChanged();
@@ -38,7 +39,7 @@ public class BlackContactAdapte extends BaseAdapter {
         this.callBack = callBack;
 
     }
-    public BlackContactAdapte(List<BlackContactInfo> systemContacts, Context context){
+    public BlackContactAdapte(List<BlackContactInfo> systemContacts,Context context){
         super();
         this.contactInfos = systemContacts;
         this.context = context;
@@ -67,21 +68,21 @@ public class BlackContactAdapte extends BaseAdapter {
             holder = new ViewHolder();
             holder.mNameTV = (TextView) view.findViewById(R.id.tv_black_name);
             holder.mModeTV = (TextView) view.findViewById(R.id.tv_black_mode);
-            //14.找到id
-            holder.mTypeTV = (TextView) view.findViewById(R.id.tv_black_type);
             holder.mContactImgv = view.findViewById(R.id.view_black_icon);
             holder.mDeleteView = view.findViewById(R.id.view_black_delete);
+            holder.mTypeTV = (TextView) view.findViewById(R.id.tv_black_type);
             view.setTag(holder);
         }else {
             holder = (ViewHolder) view.getTag();
         }
         holder.mNameTV.setText(contactInfos.get(position).contactName+"("+contactInfos.get(position).phoneNumber+")");
+
+
+
         holder.mModeTV.setText(contactInfos.get(position).getModeString(contactInfos.get(position).mode));
-        //15.添加黑名单类型视图
-        holder.mTypeTV.setText(contactInfos.get(position).blackType);
+        holder.mTypeTV.setText(contactInfos.get(position).type);
         holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         holder.mModeTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
-        //16.添加不知道什么
         holder.mTypeTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener() {

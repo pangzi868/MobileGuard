@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by 头兄。 on 2017/11/16.
+ * Created by Administrator on 2017/11/16.
  */
 
 public class AntiVirusDao {

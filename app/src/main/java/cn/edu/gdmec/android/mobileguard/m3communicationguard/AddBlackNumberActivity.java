@@ -21,10 +21,8 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
     private CheckBox mTelCB;
     private EditText mNumET;
     private EditText mNameET;
-    //7.添加黑名单类型
     private EditText mTypeET;
     private BlackNumberDao dao;
-
     private void initView(){
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_purple));
         ((TextView)findViewById(R.id.tv_title)).setText("添加黑名单");
@@ -36,7 +34,6 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
         mTelCB = (CheckBox) findViewById(R.id.cb_blacknumber_tel);
         mNumET = (EditText) findViewById(R.id.et_blacknumber);
         mNameET = (EditText) findViewById(R.id.et_blackname);
-        //8.找到id
         mTypeET = (EditText) findViewById(R.id.et_blacktype);
 
         findViewById(R.id.add_blacknum_btn).setOnClickListener(this);
@@ -50,12 +47,9 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
             //获取选中的联系人信息
             String phone = data.getStringExtra("phone");
             String name = data.getStringExtra("name");
-            //9.添加type
-            String type = data.getStringExtra("type");
             mNameET.setText(name);
             mNumET.setText(phone);
-           //10.添加type
-            mTypeET.setText(type);
+            mTypeET.setText("骚扰");
         }
     }
 
@@ -76,18 +70,16 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
             case R.id.add_blacknum_btn:
                 String number = mNumET.getText().toString().trim();
                 String name = mNameET.getText().toString().trim();
-                //11.添加type
                 String type = mTypeET.getText().toString().trim();
-                if (TextUtils.isEmpty(number)&&TextUtils.isEmpty(name)&&TextUtils.isEmpty(type)){
-                    Toast.makeText(this, "电话号码和手机号码和黑名单类型不能为空！", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(number)||TextUtils.isEmpty(name)||TextUtils.isEmpty(type)){
+                    Toast.makeText(this, "电话号码和手机号码和类型不能为空！", Toast.LENGTH_LONG).show();
                     return;
                 }else {
-                    //电话号码和名称和黑名单类型都不为空
+                    //电话号码和名称都不为空
                     BlackContactInfo blackContactInfo = new BlackContactInfo();
                     blackContactInfo.phoneNumber = number;
                     blackContactInfo.contactName = name;
-                    //12.添加type
-                    blackContactInfo.blackType = type;
+                    blackContactInfo.type = type;
                     if (mSmsCB.isChecked() & mTelCB.isChecked()){
                         //两种模式都选
                         blackContactInfo.mode=3;
