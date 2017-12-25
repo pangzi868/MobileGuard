@@ -20,6 +20,7 @@
            android:padding="5dp"
            android:textColor="@color/bright_red"
            android:text="未加锁"/>
+
         <TextView
             android:id="@+id/tv_lock"
            style="@style/zero_widthwrapcontent"
