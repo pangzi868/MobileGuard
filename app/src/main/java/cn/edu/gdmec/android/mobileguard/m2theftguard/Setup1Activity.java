@@ -6,11 +6,11 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class Setup1Activty extends BaseSetupActivity {
+public class Setup1Activity extends BaseSetupActivity {
 
     @Override
     public void showNext() {
-        startActivityAndFinishSelf(Setup2Activty.class);
+        startActivityAndFinishSelf(Setup2Activity.class);
     }
 
     @Override

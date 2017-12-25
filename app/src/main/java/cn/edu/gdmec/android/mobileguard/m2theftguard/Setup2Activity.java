@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class Setup2Activty extends BaseSetupActivity implements View.OnClickListener {
+public class Setup2Activity extends BaseSetupActivity implements View.OnClickListener {
     private TelephonyManager mTelephonyManager;
     private Button mBindSINBtn;
 
@@ -40,13 +40,13 @@ public class Setup2Activty extends BaseSetupActivity implements View.OnClickList
             Toast.makeText(this, "您还没有绑定SIM卡！", Toast.LENGTH_SHORT).show();
             return;
         }
-        startActivityAndFinishSelf(Setup3Activty.class);
+        startActivityAndFinishSelf(Setup3Activity.class);
 
     }
 
     @Override
     public void showPre() {
-        startActivityAndFinishSelf(Setup1Activty.class);
+        startActivityAndFinishSelf(Setup1Activity.class);
     }
     @Override
     public void onClick(View v) {

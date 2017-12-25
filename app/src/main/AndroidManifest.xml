@@ -20,7 +20,7 @@
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
     <!--高级工具程序锁部分-->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermission"/>
+                     tools:ignore="ProtectedPermissions"/>
 
     <application
         android:name=".App"
@@ -41,10 +41,10 @@
 
         </activity>
         <activity android:name=".m2theftguard.LostFindActivity" />
-        <activity android:name=".m2theftguard.Setup1Activty" />
-        <activity android:name=".m2theftguard.Setup2Activty" />
-        <activity android:name=".m2theftguard.Setup3Activty" />
-        <activity android:name=".m2theftguard.Setup4Activty" />
+        <activity android:name=".m2theftguard.Setup1Activity" />
+        <activity android:name=".m2theftguard.Setup2Activity" />
+        <activity android:name=".m2theftguard.Setup3Activity" />
+        <activity android:name=".m2theftguard.Setup4Activity" />
 
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReceiver"

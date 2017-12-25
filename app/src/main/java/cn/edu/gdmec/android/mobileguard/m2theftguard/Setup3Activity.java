@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class Setup3Activty extends BaseSetupActivity implements View.OnClickListener{
+public class Setup3Activity extends BaseSetupActivity implements View.OnClickListener{
     private EditText mInputPhone;
     @Override
     public void showNext() {
@@ -24,12 +24,12 @@ public class Setup3Activty extends BaseSetupActivity implements View.OnClickList
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("safephone",safePhone);
         editor.commit();
-        startActivityAndFinishSelf(Setup4Activty.class);
+        startActivityAndFinishSelf(Setup4Activity.class);
     }
 
     @Override
     public void showPre() {
-        startActivityAndFinishSelf(Setup2Activty.class);
+        startActivityAndFinishSelf(Setup2Activity.class);
     }
 
     @Override

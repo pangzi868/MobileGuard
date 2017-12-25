@@ -9,7 +9,7 @@ import android.widget.ToggleButton;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class Setup4Activty extends BaseSetupActivity {
+public class Setup4Activity extends BaseSetupActivity {
     private TextView mStatusTV;
     private ToggleButton mToggleButton;
     @Override
@@ -23,7 +23,7 @@ public class Setup4Activty extends BaseSetupActivity {
     }
     @Override
     public void showPre() {
-        startActivityAndFinishSelf(Setup3Activty.class);
+        startActivityAndFinishSelf(Setup3Activity.class);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
