@@ -1,4 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,12 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import cn.edu.gdmec.android.mobileguard.R;
+
 public class LostFindActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mSafePhonrTV;
     private RelativeLayout mInterSetupRL;
     private SharedPreferences msharePreferences;
     private ToggleButton mToggleButton;
     private TextView mProtectStatusTV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +30,12 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
         }
         initView();
     }
+
     private boolean isSetUp(){
         return msharePreferences.getBoolean("isSetUp",false);
     }
+
+    /*初始化控件*/
     public void initView(){
         TextView mTitleTV = (TextView)findViewById(R.id.tv_title);
         mTitleTV.setText("手机防盗");
@@ -53,6 +59,7 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
             mToggleButton.setChecked(false);
         }
         mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
@@ -67,10 +74,11 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
         });
     }
     private void startSetUpActivity(){
-        Intent intent = new Intent(LostFindActivity.this,Setup1Activty.class);
+        Intent intent = new Intent(LostFindActivity.this,Setup1Activity.class);
         startActivity(intent);
         finish();
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){

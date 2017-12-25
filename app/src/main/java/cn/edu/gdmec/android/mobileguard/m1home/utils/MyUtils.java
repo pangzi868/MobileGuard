@@ -5,27 +5,19 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 /**
- * Created by Administrator on 2017/9/17.
+ * Created by Shinelon on 2017/9/28.
  */
 
 public class MyUtils {
-    /**
-     * 获取本地版本号
-     * @param context
-     * @return  返回本地版本号
-     */
     public static String getVersion(Context context){
-//        PackageManager 可以获取清单文件中的所有信息
-        PackageManager packageManager = context.getPackageManager();
+        PackageManager packageManager=context.getPackageManager();
+        PackageInfo packageInfo= null;
         try {
-            //getPackageName()获取到当前程序的包名
-            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(),0);
+            packageInfo = packageManager.getPackageInfo(context.getPackageName(),0);
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return "";
         }
-
-
     }
 }

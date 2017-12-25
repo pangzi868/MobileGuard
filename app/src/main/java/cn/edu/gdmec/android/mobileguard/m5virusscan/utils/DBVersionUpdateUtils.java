@@ -30,7 +30,7 @@ import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.DbVersionEntity;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Created by Administrator on 2017/11/16.
+ * Created by 头兄。 on 2017/11/16.
  */
 
 public class DBVersionUpdateUtils {

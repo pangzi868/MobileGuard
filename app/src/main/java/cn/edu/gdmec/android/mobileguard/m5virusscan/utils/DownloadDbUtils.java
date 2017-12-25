@@ -12,7 +12,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 /**
- * Created by Administrator on 2017/11/16.
+ * Created by 头兄。 on 2017/11/16.
  */
 
 public class DownloadDbUtils {

@@ -30,7 +30,7 @@ import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.utils.DownloadDbUtils;
 
 /**
- * Created by Administrator on 2017/9/17.
+ * Created by 头兄。 on 2017/9/17.
  */
 //获取版本号  对比版本号  下载更新
 public class VersionUpdateUtils {
@@ -136,7 +136,7 @@ public class VersionUpdateUtils {
                 DownloadUtils downloadUtils = new DownloadUtils();
                 downloadUtils.downloadApk(versionEntity.apkurl, "mobileguard.apk", context);
                 Log.d("Tag", "下载成功");*/
-               downloadNewApk(versionEntity.apkurl);
+                downloadNewApk(versionEntity.apkurl);
             }
         });
         builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {

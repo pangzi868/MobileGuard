@@ -1,29 +1,29 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.text.format.Formatter;
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.IntentFilter;
+        import android.os.Bundle;
+        import android.os.Environment;
+        import android.os.Handler;
+        import android.os.Message;
+        import android.support.v7.app.AppCompatActivity;
+        import android.text.format.Formatter;
+        import android.view.View;
+        import android.widget.AbsListView;
+        import android.widget.AdapterView;
+        import android.widget.ImageView;
+        import android.widget.ListView;
+        import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppManagerAdapter;
-import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
-import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
+        import cn.edu.gdmec.android.mobileguard.R;
+        import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppManagerAdapter;
+        import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
+        import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 
 public class AppManagerActivity extends AppCompatActivity implements View.OnClickListener {
     /*手机剩余内纯的Textviwe*/
@@ -92,11 +92,11 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_manager);
+
         receciver = new UninstallRececiver();
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_REMOVED);
         intentFilter.addDataScheme("package");
         registerReceiver(receciver,intentFilter);
-
         initView();
     }
 
@@ -106,7 +106,6 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         ((TextView)findViewById(R.id.tv_title)).setText("软件管家");
         mLeftImagv.setOnClickListener(this);
         mLeftImagv.setImageResource(R.drawable.back);
-
         mPhoneMemoryTV = (TextView) findViewById(R.id.tv_phonememory_appmanager);
         mSDMemoryTV = (TextView) findViewById(R.id.tv_sdmemory_appmanager);
         mAppNumTV = (TextView) findViewById(R.id.tv_appnumber);
@@ -146,12 +145,6 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                     new Thread(){
                         @Override
                         public void run() {
-                            if(position ==0){
-                                //第0个位置显示的应该是 用户程序的个数的标签
-                                return;
-                            }else if (position == (userAppInfos.size()+1)){
-                                return;
-                            }
                             AppInfo mappInfo = (AppInfo) adapter.getItem(position);
                             boolean flag = mappInfo.isSelected;
                             for (AppInfo appInfo : userAppInfos){
@@ -202,3 +195,4 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         super.onDestroy();
     }
 }
+

@@ -3,7 +3,7 @@ package cn.edu.gdmec.android.mobileguard.m5virusscan.entity;
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by Administrator on 2017/11/16.
+ * Created by 头兄。 on 2017/11/20.
  */
 
 public class ScanAppInfo {
@@ -12,6 +12,6 @@ public class ScanAppInfo {
     public String packagename;
     public String description;
     public Drawable appicon;
-    public String md5info;
     public String virusScanUrl;
+    public String md5info;
 }

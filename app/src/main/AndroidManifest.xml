@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="cn.edu.gdmec.android.mobileguard">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="cn.edu.gdmec.android.mobileguard">
 
-    <!-- 通讯卫士部分 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -16,11 +13,17 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- 通讯卫士部分 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <!-- 手机杀毒部分 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
-    <!--高级工具程序锁部分-->
+    <!-- 缓存清理部分 -->
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <!-- 高级工具程序锁部分 -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermission"/>
+        tools:ignore="ProtectedPermissions"/>
 
     <application
         android:name=".App"
@@ -40,11 +43,16 @@
         <activity android:name=".m1home.HomeActivity">
 
         </activity>
-        <activity android:name=".m2theftguard.LostFindActivity" />
-        <activity android:name=".m2theftguard.Setup1Activty" />
-        <activity android:name=".m2theftguard.Setup2Activty" />
-        <activity android:name=".m2theftguard.Setup3Activty" />
-        <activity android:name=".m2theftguard.Setup4Activty" />
+        <activity android:name=".m2theftguard.LostFindActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup1Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup2Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup3Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".m2theftguard.Setup4Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReceiver"
@@ -108,35 +116,36 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".m4appmanager.AppManagerActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".m5virusscan.VirusScanSpeedActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".m5virusscan.VirusScanActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".m6cleancache.CacheClearListActivity" />
-        <activity android:name=".m6cleancache.CleanCacheActivity" />
-
-        <receiver
-            android:name=".m8trafficmonitor.reciever.BootCompleteReciever"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity android:name=".m8trafficmonitor.OperatorSetActivity" />
-        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"></activity>
-        <!--m9-->
-        <activity android:name=".m9advancedtools.AdvancedToolsActivity"/>
-        <activity android:name=".m9advancedtools.AppLockActivity"/>
-        <activity android:name=".m9advancedtools.EnterPswActivity"/>
-        <activity android:name=".m9advancedtools.NumBelongtoActivity"/>
-        <activity android:name=".m9advancedtools.SMSBackupActivity"/>
-        <activity android:name=".m9advancedtools.SMSReducitionActivity"/>
+        <!--软件管家部分-->
+        <activity android:name=".m4appmanager.AppManagerActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--杀毒软件部分-->
+        <activity android:name=".m5virusscan.VirusScanActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m5virusscan.VirusScanSpeedActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--缓存清理部分-->
+        <activity android:name=".m6cleancache.CacheClearListActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m6cleancache.CleanCacheActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--流量统计-->
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--号码归属地-->
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m9advancedtools.NumBelongtoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <!--程序所-->
+        <activity android:name=".m9advancedtools.AppLockActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m9advancedtools.EnterPswActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <service android:name=".m9advancedtools.service.AppLockService"
-            android:persistent="true"/>
+                 android:persistent="true"/>
     </application>
 
 </manifest>

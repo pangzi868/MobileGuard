@@ -238,7 +238,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         mLeftImagv.setImageResource(R.drawable.back);
         mProcessTV = (TextView) findViewById(R.id.tv_scanprocess);
         mScanAppTV = (TextView) findViewById(R.id.tv_scansapp);
-        mCanclBtn = (Button) findViewById(R.id.btn_canclescan);
+        mCanclBtn = (Button) findViewById(R.id.btn_cancelscan);
         mCanclBtn.setOnClickListener(this);
         mScanListView = (ListView) findViewById(R.id.lv_scanapps);
         adapter = new ScanVirusAdapter(mScanAppInfos,this);
@@ -264,7 +264,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
             case R.id.imgv_leftbtn:
                 finish();
                 break;
-            case R.id.btn_canclescan:
+            case R.id.btn_cancelscan:
                 if (process == total & process >0){
                     //扫描已完成
                     finish();
@@ -281,7 +281,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                     //重新扫描
                     scanVirus();
                     //更换背景图片
-                    mCanclBtn.setBackgroundResource(R.drawable.cancle_scan_btn_selector);
+                    mCanclBtn.setBackgroundResource(R.drawable.cancel_scan_btn_selector);
                 }
                 break;
         }

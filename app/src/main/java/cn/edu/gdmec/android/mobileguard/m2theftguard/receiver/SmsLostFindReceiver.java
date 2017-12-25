@@ -1,7 +1,9 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard.receiver;
+
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,14 +18,17 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.service.GPSLocationService;
 public class SmsLostFindReceiver extends BroadcastReceiver{
     private static final String TAG = SmsLostFindReceiver.class.getSimpleName();
     private SharedPreferences sharedPreferences;
+    private ComponentName componentName;
     @Override
     public void onReceive(Context context, Intent intent) {
-        sharedPreferences = context.getSharedPreferences("config", Activity.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("config",
+                Activity.MODE_PRIVATE);
         boolean protecting = sharedPreferences.getBoolean("protecting",true);
         //如果防盗保护开启
         if (protecting){
             //获取超级管理员
-            DevicePolicyManager dpm = (DevicePolicyManager)context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+            DevicePolicyManager dpm =
+                    (DevicePolicyManager)context.getSystemService(Context.DEVICE_POLICY_SERVICE);
             //获取短信数据
             Object[] objs = (Object[]) intent.getExtras().get("pdus");
             for (Object obj : objs){

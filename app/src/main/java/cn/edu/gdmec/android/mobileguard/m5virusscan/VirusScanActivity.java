@@ -66,8 +66,8 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         Log.d("Tag", "本地数据库版本为: "+myDbversion);
         handler.sendEmptyMessage(UPDATE_VERSION);
         if (myDbversion != null){
-                Log.d("Tag", "传过去的版本为：------------"+myDbversion);
-                dbv = new DBVersionUpdateUtils(myDbversion,this,handler);
+            Log.d("Tag", "传过去的版本为：------------"+myDbversion);
+            dbv = new DBVersionUpdateUtils(myDbversion,this,handler);
 
             new Thread(){
                 @Override

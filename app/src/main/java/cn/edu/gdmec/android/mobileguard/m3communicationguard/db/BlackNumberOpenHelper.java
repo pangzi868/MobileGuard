@@ -31,12 +31,13 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper {
                 "number varchar(20),"+
                 "name varchar(255),"+
                 "mode integer,"+
-                "type varchar(25))"
+                //创建添加了type
+                "type varchar(255))"
         );
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
     }
 }

@@ -1,10 +1,10 @@
 package cn.edu.gdmec.android.mobileguard.m6cleancache;
 
 import android.content.Intent;
-import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageStats;
+import android.content.pm.IPackageStatsObserver;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +26,10 @@ import java.util.List;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.adapter.CacheCleanAdapter;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
+
+/**
+ * Created by 头兄。 on 2017/11/26.
+ */
 
 public class CacheClearListActivity extends AppCompatActivity implements View.OnClickListener{
     private static final int SCANNING = 100;

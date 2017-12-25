@@ -13,7 +13,7 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.utils.DownloadDbUtils;
 
 /**
- * Created by Administrator on 2017/9/17.
+ * Created by 头兄。 on 2017/9/17.
  */
 //下载的工具类
 public class DownloadUtils {
