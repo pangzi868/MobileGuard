@@ -19,7 +19,7 @@ public class SetupPasswordDialog extends Dialog implements View.OnClickListener 
     public EditText mFirstPWDET;
 //    确认密码文本框
     public EditText mAffirmET;
-//    回调接口
+
     private MyCallBack myCallBack;
 
     @Override
@@ -33,7 +33,7 @@ public class SetupPasswordDialog extends Dialog implements View.OnClickListener 
         super(context, R.style.dialog_custom);
     }
 
-//    初始化控件
+
     public void initView(){
         mTitleTV = (TextView) findViewById(R.id.tv_setuppwd_title);
         mFirstPWDET = (EditText) findViewById(R.id.et_firstpwd);
@@ -42,7 +42,6 @@ public class SetupPasswordDialog extends Dialog implements View.OnClickListener 
         findViewById(R.id.btn_cancel).setOnClickListener(this);
     }
 
-//    设置对话框标题栏
     public void  setTitle(String title) {
         if (!TextUtils.isEmpty(title)) {
             mTitleTV.setText(title);
