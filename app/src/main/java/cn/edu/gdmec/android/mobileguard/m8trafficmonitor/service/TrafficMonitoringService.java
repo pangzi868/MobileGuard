@@ -64,6 +64,7 @@ public class TrafficMonitoringService extends Service {
             long mobileGPRS=dao.getMoblesGPRS(dataString);
             long mobileRxBytes=TrafficStats.getMobileRxBytes();
             long mobileTxBytes=TrafficStats.getMobileTxBytes();
+            //新产生的流量
             long newGprs=(mobileRxBytes+mobileTxBytes)-mOldRxBytes-mOldTxBytes;
             mOldRxBytes=mobileRxBytes;
             mOldTxBytes=mobileTxBytes;

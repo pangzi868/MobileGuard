@@ -43,7 +43,6 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_traffic_monitor);
         mSP=getSharedPreferences("config",MODE_PRIVATE);
         boolean flag=mSP.getBoolean("isset_operator",false);
@@ -52,7 +51,9 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             startActivity(new Intent(this,OperatorSetActivity.class));
             finish();
         }
-        if (!SystemInfoUtils.isServiceRunning(this,"cn.edu.gdmec.android.m8trafficmonitor.service.TrafficMonitoringService")){
+        if (!SystemInfoUtils
+                .isServiceRunning(this,
+                "cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service.TrafficMonitoringService")){
             startService(new Intent(this, TrafficMonitoringService.class));
         }
         initView();
@@ -67,6 +68,9 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         ((TextView)findViewById(R.id.tv_title)).setText("流量监控");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
+        ImageView mRightImgv = (ImageView) findViewById(R.id.imgv_rightbtn);
+        mRightImgv.setImageResource(R.drawable.proccessmanager_setting_icon);
+        mRightImgv.setOnClickListener(this);
         mCorrentFlowBtn=(Button)findViewById(R.id.btn_correction_flow);
         mCorrentFlowBtn.setOnClickListener(this);
         mTotalTV=(TextView)findViewById(R.id.tv_month_totalgprs);
@@ -117,6 +121,9 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             case R.id.imgv_leftbtn:
                 finish();
                 break;
+            case R.id.imgv_rightbtn:
+                startActivity(new Intent(this,OperatorSetActivity.class));
+                break;
             case R.id.btn_correction_flow:
                 //首先判断是哪个运营商
                 int i= mSP.getInt("operator",0);
@@ -148,101 +155,45 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     class CorrectFlowReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
-            Object[] objs=(Object[])intent.getExtras().get("pdus");
-            for (Object obj:objs){
-                SmsMessage smsMessage=SmsMessage.createFromPdu((byte[])obj);
-                String body=smsMessage.getMessageBody();
-                String address=smsMessage.getOriginatingAddress();
-                //以下短信分割只针对中国移动用户
-                if (address.equals("10086")){
-                    String[] split=body.split(",");
-                    System.out.println(split[0]);
-                    //本月剩余流量
-                    long left=0;
-                    //本月已用流量
-                    long used=0;
-                    //本月超出流量
-                    long beyond=0;
-                    for (int i=0;i<split.length;i++){
-                        if (split[i].contains("当月常用流量已用")){
-                            String usedflow=split[i].substring(9,split[i].length());
-                            used=getStringTofloat(usedflow);
-                        }else if (split[i].contains("可用")){
-                            String leftflow=split[i].substring(3,split[i].length());
-                            left=getStringTofloat(leftflow);
-                        }else if (split[i].contains("套餐外流量")){
-                            String beyondflow=split[i].substring(6,split[i].length());
-                            beyond=getStringTofloat(beyondflow);
-                        }
-                    }
-                    SharedPreferences.Editor edit=mSP.edit();
-                    edit.putLong("totalflow",used + left);
-                    edit.putLong("usedflow",used + beyond);
-                    edit.commit();
-                    mTotalTV.setText("本月流量："+Formatter.formatFileSize(context,(used + left)));
-                    mUsedTV.setText("本月已用："+Formatter.formatFileSize(context,(used + beyond)));
-                }else if(address.equals("10010")){
-                    String[] split=body.split(",");
-                    System.out.println(split[0]);
-                    //本月剩余流量
-                    long left=0;
-                    //本月已用流量
-                    long used=0;
-                    //本月超出流量
-                    long beyond=0;
-                    for (int i=0;i<split.length;i++){
-                        if (split[i].contains("本月总流量已用")){
-
-                            //联通和电信的截取字符串都需要修改。
-                            String usedflow=split[i].substring(9,split[i].length());
-                            used=getStringTofloat(usedflow);
-                        }else if (split[i].contains("剩余")){
-                            String leftflow=split[i].substring(3,split[i].length());
-                            left=getStringTofloat(leftflow);
-                        }else if (split[i].contains("套餐外流量")){
-                            String beyondflow=split[i].substring(6,split[i].length());
-                            beyond=getStringTofloat(beyondflow);
-                        }
-                    }
-                    SharedPreferences.Editor edit=mSP.edit();
-                    edit.putLong("totalflow",used + left);
-                    edit.putLong("usedflow",used + beyond);
-                    edit.commit();
-                    mTotalTV.setText("本月流量："+Formatter.formatFileSize(context,(used + left)));
-                    mUsedTV.setText("本月已用："+Formatter.formatFileSize(context,(used + beyond)));
-                }else if(address.equals("10001")){
-                    String[] split=body.split(",");
-                    System.out.println(split[0]);
-                    //本月剩余流量
-                    long left=0;
-                    //本月已用流量
-                    long used=0;
-                    //本月超出流量
-                    long beyond=0;
-                    for (int i=0;i<split.length;i++){
-                        if (split[i].contains("您当前已使用省内流量")){
-                            String usedflow=split[i].substring(9,split[i].length());
-                            used=getStringTofloat(usedflow);
-                        }else if (split[i].contains("剩余")){
-                            String leftflow=split[i].substring(3,split[i].length());
-                            left=getStringTofloat(leftflow);
-                        }else if (split[i].contains("套餐外流量")){
-                            String beyondflow=split[i].substring(6,split[i].length());
-                            beyond=getStringTofloat(beyondflow);
-                        }
-                    }
-                    SharedPreferences.Editor edit=mSP.edit();
-                    edit.putLong("totalflow",used + left);
-                    edit.putLong("usedflow",used + beyond);
-                    edit.commit();
-                    mTotalTV.setText("本月流量："+Formatter.formatFileSize(context,(used + left)));
-                    mUsedTV.setText("本月已用："+Formatter.formatFileSize(context,(used + beyond)));
+            Object[] objects = (Object[]) intent.getExtras().get("pdus");
+            for (Object obj:objects){
+                SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) obj);
+                String body = smsMessage.getMessageBody();
+                String address = smsMessage.getOriginatingAddress();
+                if (!address.equals("10086")){
+                    return;
                 }
+                String[] split = body.split("，");
+                for (String s:split
+                        ) {
+                    System.out.println(s+"......");
+                }
+                long left = 0;
+                long used = 0;
+                long beyond = 0;
+                for (int i = 0;i<split.length;i++){
+                    if (split[i].contains("当月常用流量已用")){
+                        String usedflow = split[i].substring(9,split[i].length());
+                        used = getStringTofloat(usedflow);
+                    }else if (split[i].contains("可用")){
+                        String leftflow = split[i].substring(3,split[i].length());
+                        left = getStringTofloat(leftflow);
+                    }else if(split[i].contains("套餐外流量")){
+                        String beyondflow = split[i].substring(6,split[i].length());
+                        beyond = getStringTofloat(beyondflow);
+                    }
+                }
+                SharedPreferences.Editor edit = mSP.edit();
+                edit.putLong("totalflow",used+left);
+                edit.putLong("usedflow",used+beyond);
+                edit.commit();
+                mTotalTV.setText("本月流量："
+                        +Formatter.formatFileSize(context,(used+left)));
+                mUsedTV.setText("本月已用："
+                        +Formatter.formatFileSize(context,(used+beyond)));
 
             }
-
         }
-
     }
 
     /*将字符串转换成FLOAT类型数据*/
